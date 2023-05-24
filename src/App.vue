@@ -25,9 +25,9 @@ export default {
   },
   watch: {
     page(newPage) {
+      this.handleScroll();
       this.fetchImages({ page: newPage, imagesPerPage: this.imagesPerPage });
       this.isLoaded.fill(false);
-      this.handleScroll();
     },
   },
   mounted() {

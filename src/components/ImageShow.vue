@@ -16,7 +16,7 @@
 
           <img
             v-show="this.isLoaded[Number(image.id)]"
-            :src="image.download_url"
+            :src="resizeImageReq(image.download_url)"
             @load="handleImageLoad(Number(image.id))"
           />
           <h5 v-if="this.isLoaded[Number(image.id)]">{{ image.author }}</h5>
@@ -39,6 +39,10 @@ export default {
   methods: {
     handleImageLoad(index) {
       this.isLoaded[index] = true;
+    },
+    resizeImageReq(url) {
+      const transformedUrl = url.replace(/\/\d+\/\d+$/, "");
+      return transformedUrl + "/800/400";
     },
   },
 };
